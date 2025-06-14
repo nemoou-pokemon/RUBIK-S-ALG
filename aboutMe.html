@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Funnel+Display:wght@300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Onest:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+      font-family: 'Open Sauce Sans';
+      src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
+           url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: navy;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .godly-container{
+            width: 85%;
+            height: 85vh;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0px 0px 5px 1px rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0 20px 0;
+        }
+        .header{
+            /* border: 1px solid black; */
+            width: 100%;
+            height: 15%;
+            display: flex;
+            align-items: center;
+        }
+        .header h2{
+            font-family: "Source Sans 3", sans-serif;
+            font-size: 20px;
+            color: rgb(54, 50, 62);
+            margin-left: 10px;
+        }
+        .header i{
+            font-size: 19px;
+            font-weight: 700;
+            color: rgb(54, 50, 62);
+            margin-left: 35px;
+        }
+        .main{
+            /* border: 2px solid black; */
+            width: 100%;
+            height: 85%;
+            display: flex;
+        }
+        .profile-container{
+            width: 32.5%;
+            height: 100%;
+            /* border: 1px solid blue; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .info-container{
+            width: 67.5%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .pfp-imitation{
+            border: 2px solid navy;
+            width: 82%;
+            height: 85%;
+            border-radius: 10px;
+        }
+        .detail-container{
+            width: 85%;
+            height: 86%;
+           /* border: 1px solid rgb(123, 0, 0); */
+           margin-left: 25px;
+        }
+        .text{
+            line-height: 25px;
+        }
+        .aboutMe{
+            font-size: 40px;
+            font-family: "Inter", sans-serif;
+            font-weight: 800;
+            color: rgb(54, 50, 62);
+            margin-bottom: 0px;
+            margin-top: 10px;
+        }
+        .name{
+            color: rgb(0, 0, 187);
+            font-weight: 800;
+            font-family: "Inter", sans-serif;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .text-container{
+            height: max-content;
+        }
+        .text{
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+            color: rgb(118, 118, 118);
+        }
+        span{
+            color: rgb(0, 102, 255);
+        }
+        .icon-container{
+            width: 100%;
+            height: 9.2vh;
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .icon-container i{
+            font-size: 25px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="godly-container">
+        <div class="header">
+            
+            <a href="rs3m.html"><i class="fa-solid fa-arrow-left"></i></a>
+            <h2>Home Page</h2>
+        </div>
+        <div class="main">
+            <div class="profile-container">
+                <div class="pfp-imitation"></div>
+            </div>
+            <div class="info-container">
+                <div class="detail-container">
+                    <div class="title-container">
+                        <h2 class="aboutMe">ABOUT ME</h2>
+                        <p class="name">BIMO SATRIO R.N.  -  15YO</p>
+                    </div>
+                    <div class="text-container">
+                        <p class="text">Hello, My name is Bimo and i'm currently 15 years old. I often play games but i also like to do some programming stuff, for now especially the <span>Front-End stuff</span>. I'm still learning though cause i'm still a beginner and is about to begin my first High School life! I also have a favorite sports which is <span>Volley Ball</span> where u defeat the oppenents by hitting the ball hard to the opponent's court.
+                            For games, i especially like playing <span>Roblox and Genshin Impact</span>! Both are a fun games with some puzzle and exploring stuff. Last but not least is about my Favorite Food, which is <span>Fried Rice</span>. That's all!
+                        </p>
+                    </div>
+                    <div class="icon-container">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-square-facebook"></i>
+                        <i class="fa-brands fa-square-x-twitter"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

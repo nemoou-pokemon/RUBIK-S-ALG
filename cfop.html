@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFOP</title>
+  <!-- Font Awesome Free CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="cfop.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Open Sauce Sans';
+      src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
+           url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .content-container {
+      display: flex;
+      height: 370px;
+      align-items: flex-end;
+      background-color: navy;
+      width: max-content;
+      border-radius: 6px;
+      margin-top: 40px;
+    }
+    .video {
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    .headline {
+      color: white;
+      font-size: 15px;
+      font-family: "Source Sans 3", sans-serif;
+      margin-left: 20px;
+    }
+    .godly-parents {
+      display: flex;
+      justify-content: flex-start;
+    }
+    .menu {
+      width: 35%;
+      height: 97vh;
+    }
+    .main {
+      width: 65%;
+      height: 97vh;
+      display: flex;
+      justify-content: center;
+      background-color: #e5e5e5;
+      overflow:scroll;
+      overflow-x:hidden;
+    }
+    /* .main::-webkit-scrollbar {
+      display: none;
+    } */
+    .scroll-wrapper {
+      height: 97vh;
+      width: 92.5%;
+      
+    }
+    /* .scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    } */
+    .parent-container {
+      height: max-content;
+      width: 100%;
+      margin-top: 25px;
+      background-color: white;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      /* Removed overflow */
+    }
+    .title-container {
+      height: 60px;
+      width: 100%;
+      background-color: navy;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+    .title-container h2 {
+      color: white;
+      font-family: "Source Sans 3", sans-serif;
+      margin-left: 20px;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    .material-container {
+      display: flex;
+      flex-direction: column;
+      width: max-content;
+      height: auto;
+      margin: 0 auto;
+      margin-bottom: 50px;
+    }
+    .cfop-title {
+      color: navy;
+      font-family: "Source Sans 3", sans-serif;
+      margin-top: 55px;
+    }
+    .note {
+      max-width: 700px;
+      word-wrap: break-word;
+    }
+    .button-container {
+      /* border: black 1px solid; */
+      width: 100%;
+      height: max-content;
+      margin-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+      /* margin-bottom: 30px; */
+    }
+    .text-container {
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: #f3f3f3;
+      box-shadow: 0px 0px 3px 0.5px rgb(171, 171, 171);;
+    }
+    .text-container p {
+      font-family: "Source Sans 3", sans-serif;
+      color: rgb(54, 50, 62);
+      font-weight: 700;
+      line-height: 25px;
+    }
+    .parent-container .text1 {
+      font-family: "Source Sans 3", sans-serif;
+      margin-left: 20px;
+      color: rgb(54, 50, 62);
+      font-weight: 700;
+    }
+    .btn-next {
+      border: none;
+      border-bottom: 5px solid navy;
+      border-radius: 10px;
+      padding: 10px 25px;
+      font-family: "Source Sans 3", sans-serif;
+      background: linear-gradient(to right, #5555ff, #000080);
+      color: white;
+      font-weight: 550;
+      font-size: 16px;
+      padding-right: 37.5px;
+      transition: all 0.2s;
+
+    }
+    .btn-next:active{
+     transform: translateY(2px);
+     border-bottom-color: transparent;
+    }
+    .btn-next:hover{
+        cursor: pointer;
+    }
+    .fa-solid.fa-chevron-right{
+        font-size: 15px;
+        color: white;
+        transform: translatex(5px) translateY(1px);
+        z-index: 10;
+    }
+    .filler{
+      width: 100%;
+      height: 20px;
+    }
+    /* SIDE */
+
+    .homepage-title{
+      width: 100%;
+      height: max-content;
+      /* border: 1px solid black; */
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgb(236, 236, 236);
+    }
+    .homepage-title i{
+      font-size: 20px;
+      margin-left: 30px;
+      color: rgb(54, 50, 62);
+    }
+    .homepage-title h2{
+      font-size: 18px;
+      font-family: "Source Sans 3", sans-serif;
+      margin-left: 15px;
+      color: rgb(54, 50, 62);
+    }
+    .lesson-menu{
+      width: 100%;
+      height: max-content;
+      /* border: 1px solid black; */
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .lesson-menu img{
+      border-radius: 50px;
+      width: 70px;
+      height: 70px;
+      margin-left: 30px;
+    }
+    .lesson-info{
+      /* border: 1px solid black; */
+      margin-left: 20px;
+    }
+    .lesson-info p{
+      font-family: "Source Sans 3", sans-serif;
+      margin-top: 4px;
+      margin-bottom: 3px;
+      font-weight: 500;
+      color: rgb(79, 79, 79);
+    }
+    .lesson-info h2{
+      font-family: "Source Sans 3", sans-serif;
+      margin: 0;
+      color: rgb(54, 50, 62);
+    }
+    .lessonsTitle-container{
+      width: 100%;
+      height: max-content;
+      border: 1px solid rgb(236, 236, 236);
+      margin-top: 20px;
+    }
+    .lessonsTitle-container h2{
+      margin-left: 30px;
+      font-family: "Source Sans 3", sans-serif;
+      color: rgb(54, 50, 62);
+      font-size: 20px;
+    }
+    .lessonsList{
+      width: 100%;
+      height: max-content;
+      /* border: 1px solid black; */
+      display: flex;
+      flex-direction: column;
+    }
+    .lesson{
+      display: flex;
+      align-items: center;
+      height: 57.19px;
+      border-bottom: 1px solid rgb(236, 236, 236);
+    }
+    .lesson .dot{
+      width: 15px;
+      height: 15px;
+      border-radius: 50px;
+      background-color: navy;
+      margin-left: 30px;
+    }
+    .lesson h2{
+      font-family: "Source Sans 3", sans-serif;
+      color: rgb(54, 50, 62);
+      font-size: 18px;
+      font-weight: 600;
+      margin-left: 15px;
+    }
+
+    a{
+      text-decoration: none;
+    }
+    h2 a{
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="godly-parents">
+    <div class="menu">
+      <div class="homepage-title">
+        <a href="rs3m.html"><i class="fa-solid fa-arrow-left"></i></a>
+        <h2>Rubiks Home Page</h2>
+      </div>
+      <div class="lesson-menu">
+        <img src="assets/rubiksCube-icon.jpg" alt="" class="lesson-icon">
+        <div class="lesson-info">
+          <p>Lesson 1</p>
+          <h2>What Is CFOP?</h2>
+        </div>
+      </div>
+      <div class="lessonsTitle-container">
+        <h2>Lessons</h2>
+      </div>
+      <div class="lessonsList">
+        <div class="lesson">
+          <div class="dot"></div>
+          <h2>
+            CFOP mtd.
+          </h2>
+        </div>
+        <div class="lesson">
+          <div class="dot"></div>
+          <h2>
+            <a href="cross.html">Cross</a>
+          </h2>
+        </div>
+        <div class="lesson">
+          <div class="dot"></div>
+          <h2>
+            <a href="f2l.html">F2L</a>
+          </h2>
+        </div>
+        <div class="lesson">
+          <div class="dot"></div>
+          <h2>
+            <a href="oll.html">OLL</a>
+          </h2>
+        </div>
+        <div class="lesson">
+          <div class="dot"></div>
+          <h2>
+            <a href="pll.html">PLL</a>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="scroll-wrapper">
+        <div class="parent-container">
+          <div class="title-container">
+            <h2>Most Common Method</h2>
+          </div>
+          <p class="text1">Learn CFOP First!</p>
+          <div class="material-container">
+            <div class="content-container">
+              <div class="video-container">
+                <h2 class="headline">Watch This Video!</h2>
+                <iframe class="video" width="700" height="315" src="https://www.youtube.com/embed/MS5jByTX_pk?si=u_qqMw5rkRKt7V6B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="note">
+              <h2 class="cfop-title">CFOP</h2>
+              <div class="text-container">
+                <p>The CFOP method, short for Cross, F2L, OLL, and PLL, is one of the most widely used speedcubing methods in the world. It starts with solving a cross on one face, followed by completing the first two layers (F2L) by pairing corners and edges. Then, the last layer is oriented using OLL (Orientation of the Last Layer), and finally permuted using PLL (Permutation of the Last Layer) to solve the cube. While CFOP requires memorizing many algorithms, it's extremely efficient and favored by most top speedcubers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <a href="cross.html"><button class="btn-next">Cross <i class="fa-solid fa-chevron-right"></i></button></a>
+        </div>
+        <div class="filler"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

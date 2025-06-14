@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubiks Cube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Funnel+Display:wght@300..800&family=Onest:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
+       url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Maharlika';
+  src: url('Maharlika-Regular.woff2') format('woff2'),
+       url('Maharlika-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Georgia Pro';
+  src: url('GeorgiaPro-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+        body, html{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url(assets/rubikshd.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+        p{
+            display: inline-block;
+        }
+        header{
+            width: max-content;
+            height: max-content;
+            display: inline-flex;
+            gap: 104px;
+            justify-content: center;
+            margin-top: 8px;
+            margin-left: 400px;
+        }
+        header p{
+            color: white;
+            font-size: 23.5px;
+            font-family: 'Open Sauce Sans', sans-serif;
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0;
+        }
+        .navbar{
+            width: 270px;
+            margin-left: 80px;
+            margin-bottom: 30px;
+        }
+        .navbar h1{
+            font-size: 70px;
+            font-family: "Maharlika", sans-serif;
+            color: white;
+            font-weight: 400;
+            margin-top: 4px;
+        }
+        .note{
+            color: white;
+            font-family: "Open Sauce Sans", sans-serif;
+            width: 450px;
+            display: inline-block;
+            line-height: 25px;
+            margin-left: 80px;
+            margin-top: 44px;
+        }
+        .note p{
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+        }
+        .side{
+            position: absolute;
+            width: 150px;
+            height: 300px;
+            top: 30%;
+            right: 12%;
+        }
+        .side p{
+            color: white;
+            font-family: "Open Sauce Sans", sans-serif;
+            display: block;
+            font-size: 22px;
+            text-align: right;
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+        }
+        .history{
+            width: 100%;
+            height: 100vh;
+            background-color: #f3f4ee;
+            margin-top: 70px;
+            position: absolute;
+        }
+        .erno{
+            width: 42.5%;
+            height: 515px;
+            margin-left: 80px;
+            margin-top: 80px;
+            display: inline-block;
+        }
+        .erno-img{
+            width: 100%;
+            height: 85%;
+        }
+        .erno-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .text{
+            width: 38%;
+            height: 515px;
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 80px;
+            margin-left: 80px;
+        }
+        .history-head{
+            margin: 0;
+            font-size: 65px;
+            font-family: "Georgia Pro", sans-serif;
+            font-weight: 600;
+        }
+        .history-text{
+            font-size: 15px;
+            font-family: "Source Sans 3", sans-serif;
+            margin-top: 30px;
+        }
+        .history-text span{
+            display: block;
+            margin-bottom: 20px;
+        }
+        .erno-info{
+            height: 15%;
+        }
+        .erno-main{
+            width: max-content;
+            height: 100%;
+            display: inline-block;
+        }
+        .erno-name h2, .erno-pos p{
+            margin: 0;
+            font-family: "Source Sans 3", sans-serif;
+        }
+        .erno-name h2{
+            font-size: 21px;
+            color: #45cf63;
+        }
+        .erno-pos p{
+            font-size: 19px;
+            font-weight: 500;
+            font-style: italic;
+            color: rgb(43, 26, 1);
+        }
+        .erno-name{
+            margin-top: 28px;
+        }
+        .erno-sig{
+            width: 64.2%;
+            height: 98%;
+            display: inline-block;
+        }
+        .erno-sig img{
+            height: 100%;
+            margin-left: 35%;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        @media(max-width: 600px){
+            *{
+                font-size: 2vw;
+                margin: 2px;
+            }
+            img{
+                width: 600px;
+                height: auto;
+            }
+        }
+        /* .history{
+            background-color: rgb(27, 16, 26);
+        }
+        .history p, h1,h2,h3,h4,h5{
+            color: white;
+        }
+        #head h1, #head p{
+            color: black;
+        } */
+
+         .change{
+            display: inline-block;
+            margin-left: 162.5px;
+            position: relative;
+            bottom: 6.5px;
+            padding: 10px 17px;
+            border: none;
+            border-radius: 23px;
+            color: white;
+            background-color: rgb(24, 9, 24);
+            font-weight:600;
+         }
+         .dark-mode{
+            color: black;
+         }
+         /* NEW CODES */
+
+         .side-a{
+            text-decoration: none;
+         }
+
+    </style>
+</head>
+<body>
+    <section id="head">
+        <div class="top-bar">
+            <header>
+                <a href="#first"><p>History</p></a>
+                <a href="rubikstore.html">
+                    <p>Store</p>
+                </a>
+                <a href="aboutMe.html"><p>About Me</p></a>
+            </header>
+            <!-- <button class="change" onclick="time()">Dark Mode</button> -->
+        </div>
+
+
+        <div class="navbar">
+            <h1>Learn How to Cube</h1>
+        </div>
+        <div class="note">
+            <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda neque illo, rerum aspernatur fugiat sunt exercitationem quae ullam id atque dolorem. Necessitatibus veritatis
+                consequuntur totam earum, 
+                omnis minus assumenda inventore tempore cum numquam veniam ipsa!</p>
+        </div>
+        <div class="side">
+            <a href="contactMe.html" class="side-a"><p>Contact Me</p></a>
+            <a href="cfop.html" class="side-a"><p>CFOP mtd.</p></a>
+            <a href="cross.html" class="side-a"><p>Cross</p></a>
+            <a href="f2l.html" class="side-a"><p>F2L</p></a>
+            <a href="oll.html" class="side-a"><p>OLL</p></a>
+            <a href="pll.html" class="side-a"><p>PLL</p></a>
+        </div>
+    </section>
+
+    <section id="first">
+        <div class="history">
+            <div class="erno">
+                <div class="erno-img">
+                    <img src="assets/upscalemedia-transformed.webp" alt="">
+                </div>
+                <div class="erno-info">
+                    <div class="erno-main">
+                        <div class="erno-name">
+                            <h2>ERNO RUBIKS</h2>
+                        </div>
+                        <div class="erno-pos">
+                            <p>Founder of Rubiks Cube</p>
+                        </div>
+                    </div>
+                    <div class="erno-sig">
+                        <img src="assets/download.png" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                <h1 class="history-head">
+                    History <br> of Rubiks Cube
+                </h1>
+                <p class="history-text">
+                    In the early 1970s, Hungarian architect and professor Ernő Rubik sought a way to help his students understand three-dimensional movement. This pursuit led him to invent a small, twisting cube in 1974, originally called the “Magic Cube.” Designed as a teaching tool, the puzzle’s interlocking pieces moved smoothly while maintaining structural integrity, a novel engineering feat at the time. <span></span>
+    
+                    After realizing its potential as a global puzzle, Rubik partnered with the toy company Ideal Toy Corp., which rebranded it as the Rubik’s Cube in 1980. The puzzle quickly became a worldwide sensation, challenging minds with its deceptively simple yet complex design. <span></span>
+    
+                    Over the years, the Rubik’s Cube has evolved into a cultural icon, sparking competitions, speedcubing, and even influencing fields like mathematics and artificial intelligence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+<script>
+    // function time(){
+    //     if(document.body.classList.contains("dark-mode")){
+    //         document.body.classList.remove("dark-mode")
+    //     }else{
+    //         var paragraphs = document.querySelectorAll("p")
+    //         var pside = document.querySelectorAll(".side p")
+    //         var head = document.querySelectorAll("header h1")
+    //         paragraphs.forEach(p => {
+    //             p.classList.add("dark-mode")
+    //         });
+
+    //         pside.forEach(p => {
+    //             p.classList.add("dark-mode")
+    //         })
+
+    //         head.forEach(h1 => {
+    //             h1.classList.add("dark-mode")
+    //         })
+    //     }
+    // }
+</script>

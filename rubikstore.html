@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubiks Cube Store</title>
+    <style>
+        @font-face {
+  font-family: 'Maharlika';
+  src: url('Maharlika-Regular.woff2') format('woff2'),
+       url('Maharlika-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
+       url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+        body{
+            background-color: #282727;
+        }
+
+        .num{
+            position: absolute;
+            right: 16.5%;
+            top: 22.5px;
+            color: white;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            margin-left: 50px;
+        }
+        .cubes{
+            border: 1px solid white;
+            padding-bottom: 10px;
+        }
+        .cubes img{
+            width: 280px;
+            height: auto;
+        }
+        .cubes p{
+            font-family: "Open Sauce", sans-serif;
+            font-weight: 500;
+            margin: 0 ;
+            margin-left: 30px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            color: white;
+        }
+        .cubes span{
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        button{
+            margin-top: 4px;
+            background-color: #cf4e0f;
+            color: white;
+            border: none;padding: 9px 80px;
+            border-radius: 15px;
+            margin-left: 27px;
+        }
+        header{
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+        .heads{
+            margin-left: 50px;
+            border-bottom: white 1.5px solid;
+            width: 600px;
+        }
+        .heads h1{
+            font-family: "Maharlika", sans-serif;
+            font-weight: 500;
+            margin: 0;
+            font-size: 90px;
+            margin-top: 20px;
+            color: white;
+        }
+        .heads span{
+            font-weight: bold ;
+            font-style: italic;
+        }
+        .heads .cart{
+            width: 85px;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            border: 1px solid white;
+            padding: 3px 5px 0px 3px;
+        }
+        .heads .exit{
+            width: 85px;
+            position: absolute;
+            top: 20px;
+            right: 230px;
+            border: 1px solid white;
+            padding: 3px 5px 5px 3px;
+        }
+        .heads .reset{
+            width: 85px;
+            position: absolute;
+            top: 20px;
+            right: 130px;
+            border: 1px solid white;
+            padding: 3px 5px 5px 3px;
+            cursor: pointer;
+        }
+        .heads p{
+            color: white;
+            font-size: 19px;
+            text-align: center;
+            position: absolute;
+            top: 34px;
+            right: 68px;
+        }
+        .cubes button{
+            cursor: pointer;
+            transition: 0.25s color, 0.25s background-color, 0.1s opacity;
+        }
+        .cubes button:hover{
+            color: #cf4e0f;
+            background-color: white;
+        }
+        .cubes button:active{
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heads">
+            <h1>Rubiks<br> <span>cube store</span></h1>
+
+            <p id="quantity">0</p>
+
+            <img src="assets/cart-removebg-preview.png" alt="" class="cart">
+            <img src="assets/reset-removebg-preview.png" alt="" class="reset" onclick="reset()"> 
+            <a href="rs3m.html">
+                <img src="assets/exit-removebg-preview (1).png" alt="" srcset="" class="exit">
+            </a>
+
+        </div>
+    </header>    
+        <div class="container">
+            <div class="cubes">
+                <img src="assets/ganmaglev.webp" alt="">
+                <p>Gan 15 MagLev <span>$20.99</span></p>
+                <button onclick="addcart(1)">Add to Cart</button>
+            </div>
+            <div class="cubes">
+                <img src="assets/hudong.webp" alt="">
+                <p>Hudong Light Fanxin <span>$20.99</span></p>
+                <button onclick="addcart(1)">Add to Cart</button>
+            </div>
+            <div class="cubes">
+                <img src="assets/weilong.jpeg" alt="">
+                <p>WeiLong WRM V10 <span>$20.99</span></p>
+                <button onclick="addcart(1)">Add to Cart</button>
+            </div>
+            <div class="cubes">
+                <img src="assets/rs3mcube.jpg" alt="">
+                <p>RS3M V5 <span>$20.99</span></p>
+                <button onclick="addcart(1)">Add to Cart</button>
+            </div>
+        </div>
+        <script>
+            var qtt=0
+            function addcart(add){
+                if(add=1){
+                    qtt += 1
+                }
+                
+                document.getElementById("quantity").innerText = `${qtt}`;
+            }
+            function reset(){
+                qtt = 0
+                document.getElementById("quantity").innerText = `${qtt}`
+            }
+        </script>
+</body>
+</html>

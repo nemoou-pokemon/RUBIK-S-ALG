@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Funnel+Display:wght@300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Onest:wght@100..900&family=Sarala:wght@400;700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+      background-color: rgb(108, 208, 205);
+      width: 100%;
+      height: 99vh;
+      display: flex;
+    }
+    .title{
+      width: 35%;
+      height: 100%;
+      /* border: 2px solid black; */
+    }
+    .title-container{
+      margin-top: 80px;
+      margin-left: 80px;
+      height: max-content;
+      /* border: 2px solid black; */
+    }
+    .title-container h2{
+      font-family: "Inter", sans-serif;
+      margin-bottom: 0px;
+      color: rgb(5, 40, 86);
+      font-size: 60px;
+    }
+    .title-container p{
+      font-family: "Inter", sans-serif;
+      margin-top: 4px;
+      color: white;
+      font-size: 32.5px;
+    }
+    .contact{
+      display: flex;
+      width: 65%;
+      height: 100%;
+      align-items: center;
+      /* border: 2px solid red; */
+    }
+    .contact-container{
+      background-color: rgb(27, 43, 68);
+      border-radius: 18px;
+      width: 750px;
+      height: 490px;
+      display: flex;
+    }
+    .left-side{
+      width: 51.5%;
+      height: 100%;
+      /* border: 2px solid red; */
+    }
+    .right-side{
+      width: 48.5%;
+      height: 102.5%;
+      /* border: 2px solid white; */
+      display: flex;
+      align-items: center;
+    }
+    .left-content{
+      height: max-content;
+      margin-left: 50px;
+      margin-top: 70px;
+      /* border: 2px solid paleturquoise; */
+    }
+    .left-content h2{
+      color: white;
+      font-size: 35px;
+      margin: 0;
+      font-family: "Sarala", sans-serif;
+      line-height: 37px;
+      font-weight: 500
+    }
+    span{
+      color: rgb(108, 208, 205);
+    }
+    .address{
+      margin-top: 50px;
+    }
+    .address p{
+      color: rgb(220, 220, 220);
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+    }
+    .address i{
+      color: rgb(108, 208, 205);
+      margin-right: 14px;
+      font-size: 18px;
+    }
+    .icon-container{
+      width: 100%;
+      height: 100%;
+      /* border: 2px solid red; */
+      margin-top: 60px;
+    }
+    .icon-container i{
+      color: rgb(108, 208, 205);
+    }
+    form{
+      background-color: white;
+      width: 87%;
+      height: 75%;
+      border-radius: 15px;
+    }
+    .int{
+      color: rgb(32, 140, 152);
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      margin-left: 16px;
+      margin-top: 27.5px;
+    }
+    input[type="radio"]{
+       display: none;
+    }
+
+    .radio{
+      /* border: 2px solid black; */
+      margin-left: 16px;
+      width: 225px;
+    }
+    #label-radio{
+      font-family: "Inter", sans-serif;
+      font-size: 8.5px;
+      font-weight: 500;
+      color: rgb(172, 172, 172);
+      border: 1px solid rgb(172, 172, 172);
+      border-radius: 35px;
+      padding: 5px 10px;
+      margin-right: 6px;
+    }
+    .four-five{
+      margin-top: 15px;
+    }
+    input[type="radio"]:checked + #label-radio {
+      background-color: rgb(8, 108, 133);
+      border: none;
+      color: white;
+    }
+    .data{
+      /* border: 2px solid black; */
+      width: 90%;
+      height: 200px;
+      margin-top: 15px;
+      margin-left: 16px;
+
+    }
+    #label-name{
+      display: block;
+      color: rgb(172,172,172);
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+    }
+    input[type="text"]{
+      outline: none;
+      border: none;
+      border-bottom: 1.5px solid rgb(172, 172, 172);
+      width: 95%;
+      margin-top: 8px;
+      font-size: 10px;
+      padding: 0px 0px 8px 8px;
+    }
+    .input-group:focus-within #label-name{
+      color: rgb(8, 108, 133);
+    }
+    input[type="text"]:focus{
+      border-bottom: 1.5px solid rgb(8, 108, 133);
+    }
+    textarea{
+      outline: none;
+      border: 1.5px solid rgb(172,172,172);
+      width: 95.5%;
+      height: 65px;
+      margin-top: 8px;
+      font-size: 10px;
+      resize: none;
+      border-radius: 6px;
+    }
+    textarea:focus{
+      border: 1.5px solid rgb(8, 108, 133);
+    }
+    input[type="submit"]{
+      margin: 0;
+      border: none;
+      display: block;
+      box-sizing: border-box;
+      padding: 9px 0;
+      margin: 10px auto;
+      width: 280px;
+      background-color: rgb(8, 108, 133);
+      color: rgb(255, 255, 255);
+      border-radius: 20px;
+      font-family: "Inter", sans-serif;
+      font-size: 8px;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover{
+      opacity: 0.8;
+    }
+    input[type="submit"]:active{
+      opacity: 0.5;
+    }
+    .homepage-title{
+      width: 100%;
+      height: max-content;
+      /* border: 1px solid black; */
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgb(236, 236, 236);
+      position: absolute;
+    }
+     .homepage-title i{
+      font-size: 20px;
+      margin-left: 30px;
+      color: rgb(54, 50, 62);
+    }
+    .homepage-title h2{
+      font-size: 18px;
+      font-family: "Source Sans 3", sans-serif;
+      margin-left: 15px;
+      color: rgb(54, 50, 62);
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    <div class="homepage-title">
+        <a href="rs3m.html"><i class="fa-solid fa-arrow-left"></i></a>
+        <h2>Rubiks Home Page</h2>
+    </div>
+    <div class="title-container">
+      <h2>RUBIKS alg</h2>
+      <p>Contact Form</p>
+    </div>
+  </div>
+  <div class="contact">
+    <div class="contact-container">
+      <div class="left-side">
+        <div class="left-content">
+          <h2>Let's talk on something <span>great</span> together</h2>
+          <div class="address">
+            <p><i class="fa-regular fa-envelope"></i>nemosAlg@gmail.com</p>
+            <p style="margin-top: 30px;"><i class="fa-solid fa-phone"></i>+62 123 456 789</p>
+            <p style="margin-top: 30px;"><i class="fa-solid fa-location-dot"></i>Coconut Village 1 Block Q2</p>
+          </div>
+          <div class="icon-container">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i style="margin-left: 20px;"class="fa-brands fa-behance"></i>
+            <i style="margin-left: 20px;"class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+      </div>
+      <div class="right-side">
+        <form action="https://formsubmit.co/timedooracademy@gmail.com" method="POST">
+          <h3 class="int">I'm interested in:</h3>
+          <div class="radio">
+            <input type="radio" name="abc" id="opt1">
+            <label for="opt1" id="label-radio">Cubing</label>
+
+            <input type="radio" name="abc" id="opt2">
+            <label for="opt2" id="label-radio">Selling</label>
+
+            <input type="radio" name="abc" id="opt3">
+            <label for="opt3" id="label-radio">Invest</label>
+            <div class="four-five">
+              <input type="radio" name="abc" id="opt4">
+              <label for="opt4" id="label-radio">Collab</label>
+
+              <input type="radio" name="abc" id="opt5">
+              <label for="opt5" id="label-radio">Other</label>
+            </div>
+          </div>
+          <div class="data">
+            <div class="input-group">
+              <label for="name" id="label-name" >Your Name</label>
+              <input type="text"placeholder="Input your name here">
+            </div>
+            <div class="input-group" style="margin-top: 12.5px;">
+              <label for="name" id="label-name" >Your Email</label>
+              <input type="text"placeholder="@gmail.com">
+            </div>
+            <div class="input-group" style="margin-top: 12.5px;">
+              <label for="name" id="label-name" >Your Message</label>
+              <textarea name="" id=""></textarea>
+            </div>
+          </div>
+          <input type="submit" value="Send message">
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>
