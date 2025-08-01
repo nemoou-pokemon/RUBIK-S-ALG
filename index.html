@@ -240,7 +240,7 @@
                 </a>
                 <a href="aboutMe.html"><p>About Me</p></a>
             </header>
-            <!-- <button class="change" onclick="time()">Dark Mode</button> -->
+            <button id="installBtn" style="display: none;">Install PWA</button>
         </div>
 
 
@@ -297,12 +297,42 @@
         </div>
     </section>
 <script>
+  // 1. Register the Service Worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
       .then(() => console.log('SW registered'))
       .catch((err) => console.error('SW failed:', err));
   }
+
+  // 2. Handle the PWA install button
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  // Check if install button exists
+  if (installBtn) {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block'; // Show install button
+    });
+
+    installBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choice) => {
+          if (choice.outcome === 'accepted') {
+            console.log('User accepted install');
+          } else {
+            console.log('User dismissed install');
+          }
+          deferredPrompt = null;
+          installBtn.style.display = 'none'; // Hide after use
+        });
+      }
+    });
+  }
 </script>
+
 </body>
 </html>
 
