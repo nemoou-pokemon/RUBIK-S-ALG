@@ -4,7 +4,7 @@ const filesToCache = [
   './',
   './index.html',
   './manifest.json',
-  './assets/blueRubiks.png'
+  './assets/blueRubiksV2.png'
 ];
 
 // Install: cache essential files
