@@ -300,51 +300,138 @@
         </div>
     </section>
 <script>
-  // 1. Register the service worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(() => console.log('✅ Service Worker registered'))
-      .catch(err => console.error('❌ Service Worker registration failed:', err));
-  }
-
-  // 2. Handle the install prompt
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault(); // Prevent automatic prompt
-    deferredPrompt = e;
-    console.log('🟡 Install prompt saved');
-
-    // Option 1: Show the button via inline style
-    if (installBtn) installBtn.style.display = 'block';
-
-    // Option 2: Or via CSS class toggle (recommended)
-    // installBtn.classList.remove('hidden');
-  });
-
-  if (installBtn) {
-    installBtn.addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-
-        deferredPrompt.userChoice.then(choice => {
-          if (choice.outcome === 'accepted') {
-            console.log('✅ User accepted the install prompt');
-          } else {
-            console.log('❌ User dismissed the install prompt');
-          }
-
-          deferredPrompt = null;
-
-          // Hide the button after interaction
-          installBtn.style.display = 'none';
-          // Or use: installBtn.classList.add('hidden');
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        
+        // Debug function to check PWA status
+        function checkPWAStatus() {
+            console.log('🔍 PWA Status Check:');
+            console.log('- Service Worker supported:', 'serviceWorker' in navigator);
+            console.log('- HTTPS:', location.protocol === 'https:');
+            console.log('- Standalone mode:', window.matchMedia('(display-mode: standalone)').matches);
+            console.log('- User agent:', navigator.userAgent);
+            
+            // Check if already installed
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('✅ PWA is already installed');
+                return;
+            }
+        }
+        
+        // Run status check immediately
+        checkPWAStatus();
+        
+        // Set up beforeinstallprompt listener BEFORE registering service worker
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('🟡 beforeinstallprompt event fired at:', new Date().toLocaleTimeString());
+            
+            // Prevent the default prompt
+            e.preventDefault();
+            
+            // Store the event for later use
+            deferredPrompt = e;
+            
+            // Show the install button
+            if (installBtn) {
+                installBtn.classList.remove('hidden');
+                console.log('✅ Install button shown');
+            }
         });
-      }
-    });
-  }
-</script>
+        
+        // Register the service worker with better error handling
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker registered successfully:', registration.scope);
+                        
+                        // Check if service worker is ready
+                        return navigator.serviceWorker.ready;
+                    })
+                    .then((registration) => {
+                        console.log('✅ Service Worker is ready');
+                        
+                        // Double-check if beforeinstallprompt should fire now
+                        setTimeout(() => {
+                            if (!deferredPrompt && installBtn.classList.contains('hidden')) {
+                                console.log('⚠️ beforeinstallprompt may not fire - checking criteria...');
+                                checkPWAStatus();
+                            }
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('❌ Service Worker registration failed:', err);
+                    });
+            });
+        }
+
+        // Handle install button click
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                console.log('🔵 Install button clicked');
+                
+                if (!deferredPrompt) {
+                    console.log('❌ No deferred prompt available');
+                    alert('Install prompt not available. Try refreshing the page.');
+                    return;
+                }
+
+                try {
+                    // Show the install prompt
+                    deferredPrompt.prompt();
+
+                    // Wait for the user's response
+                    const { outcome } = await deferredPrompt.userChoice;
+                    
+                    if (outcome === 'accepted') {
+                        console.log('✅ User accepted the install prompt');
+                    } else {
+                        console.log('❌ User dismissed the install prompt');
+                    }
+                } catch (error) {
+                    console.error('❌ Error showing install prompt:', error);
+                }
+
+                // Clear the deferred prompt
+                deferredPrompt = null;
+                
+                // Hide the install button
+                installBtn.classList.add('hidden');
+            });
+        }
+
+        // Handle successful installation
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ PWA was installed successfully');
+            
+            // Hide the install button if it's still visible
+            if (installBtn) {
+                installBtn.classList.add('hidden');
+            }
+            
+            // Clear the deferred prompt
+            deferredPrompt = null;
+        });
+
+        // Fallback: Show button after 5 seconds if criteria might be met but event didn't fire
+        setTimeout(() => {
+            if (!deferredPrompt && 
+                installBtn.classList.contains('hidden') && 
+                location.protocol === 'https:' && 
+                'serviceWorker' in navigator &&
+                !window.matchMedia('(display-mode: standalone)').matches) {
+                
+                console.log('⚠️ Fallback: Showing install button (event may have been missed)');
+                // You can uncomment this line to force show the button for testing
+                // installBtn.classList.remove('hidden');
+            }
+        }, 5000);
+
+        // Debug: Log when page is fully loaded
+        window.addEventListener('load', () => {
+            console.log('📄 Page fully loaded at:', new Date().toLocaleTimeString());
+        });
+    </script>
 
 
 </body>
