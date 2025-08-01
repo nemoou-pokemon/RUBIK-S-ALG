@@ -7,13 +7,13 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "assets/blueRubiksV2.png",
+      "src": "/assets/blueRubiksV2.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/blueRubiksDeks.png",
-      "sizes": "192x192",
+      "src": "/assets/blueRubiksDeks.png",
+      "sizes": "512x519",
       "type": "image/png"
     }
   ]
