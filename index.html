@@ -5,78 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rubiks Cube</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Funnel+Display:wght@300..800&family=Onest:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Funnel+Display:wght@300..800&family=Onest:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json" />
-<meta name="theme-color" content="#ffffff" />
-<link rel="shortcut icon" href="assets/blueRubiksV2.png" type="image/png">
-<link rel="icon" href="/assets/blueRubiksV2.png" type="image/png">
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="shortcut icon" href="assets/blueRubiksV2.png" type="image/png">
+    <link rel="icon" href="/assets/blueRubiksV2.png" type="image/png">
     <style>
         @font-face {
-  font-family: 'Open Sauce Sans';
-  src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
-       url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Maharlika';
-  src: url('Maharlika-Regular.woff2') format('woff2'),
-       url('Maharlika-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Georgia Pro';
-  src: url('GeorgiaPro-Light.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+            font-family: 'Open Sauce Sans';
+            src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
+                 url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Maharlika';
+            src: url('Maharlika-Regular.woff2') format('woff2'),
+                 url('Maharlika-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Georgia Pro';
+            src: url('GeorgiaPro-Light.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-
-        body, html{
+        body, html {
             margin: 0;
             padding: 0;
         }
-        body{
+        
+        body {
             background: url(assets/rubikshd.jpeg);
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;
         }
-        p{
+        
+        p {
             display: inline-block;
         }
-        header{
-            width: max-content;
-            height: max-content;
-            display: inline-flex;
+        
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px 20px;
+            box-sizing: border-box;
+        }
+        
+        header {
+            display: flex;
             gap: 104px;
             justify-content: center;
-            margin-top: 8px;
-            margin-left: 400px;
+            flex: 1;
         }
-        header p{
+        
+        header p {
             color: white;
             font-size: 23.5px;
             font-family: 'Open Sauce Sans', sans-serif;
             text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 0;
+            margin: 0;
         }
-        .navbar{
+        
+        header a {
+            text-decoration: none;
+        }
+        
+        .navbar {
             width: 270px;
             margin-left: 80px;
             margin-bottom: 30px;
         }
-        .navbar h1{
+        
+        .navbar h1 {
             font-size: 70px;
             font-family: "Maharlika", sans-serif;
             color: white;
             font-weight: 400;
             margin-top: 4px;
         }
-        .note{
+        
+        .note {
             color: white;
             font-family: "Open Sauce Sans", sans-serif;
             width: 450px;
@@ -85,17 +101,20 @@
             margin-left: 80px;
             margin-top: 44px;
         }
-        .note p{
+        
+        .note p {
             text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
         }
-        .side{
+        
+        .side {
             position: absolute;
             width: 150px;
             height: 300px;
             top: 30%;
             right: 12%;
         }
-        .side p{
+        
+        .side p {
             color: white;
             font-family: "Open Sauce Sans", sans-serif;
             display: block;
@@ -104,30 +123,35 @@
             text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
             margin-bottom: 28px;
         }
-        .history{
+        
+        .history {
             width: 100%;
             height: 100vh;
             background-color: #f3f4ee;
             margin-top: 70px;
             position: absolute;
         }
-        .erno{
+        
+        .erno {
             width: 42.5%;
             height: 515px;
             margin-left: 80px;
             margin-top: 80px;
             display: inline-block;
         }
-        .erno-img{
+        
+        .erno-img {
             width: 100%;
             height: 85%;
         }
-        .erno-img img{
+        
+        .erno-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .text{
+        
+        .text {
             width: 38%;
             height: 515px;
             display: inline-block;
@@ -135,102 +159,119 @@
             margin-top: 80px;
             margin-left: 80px;
         }
-        .history-head{
+        
+        .history-head {
             margin: 0;
             font-size: 65px;
             font-family: "Georgia Pro", sans-serif;
             font-weight: 600;
         }
-        .history-text{
+        
+        .history-text {
             font-size: 15px;
             font-family: "Source Sans 3", sans-serif;
             margin-top: 30px;
         }
-        .history-text span{
+        
+        .history-text span {
             display: block;
             margin-bottom: 20px;
         }
-        .erno-info{
+        
+        .erno-info {
             height: 15%;
         }
-        .erno-main{
+        
+        .erno-main {
             width: max-content;
             height: 100%;
             display: inline-block;
         }
-        .erno-name h2, .erno-pos p{
+        
+        .erno-name h2, .erno-pos p {
             margin: 0;
             font-family: "Source Sans 3", sans-serif;
         }
-        .erno-name h2{
+        
+        .erno-name h2 {
             font-size: 21px;
             color: #45cf63;
         }
-        .erno-pos p{
+        
+        .erno-pos p {
             font-size: 19px;
             font-weight: 500;
             font-style: italic;
             color: rgb(43, 26, 1);
         }
-        .erno-name{
+        
+        .erno-name {
             margin-top: 28px;
         }
-        .erno-sig{
+        
+        .erno-sig {
             width: 64.2%;
             height: 98%;
             display: inline-block;
         }
-        .erno-sig img{
+        
+        .erno-sig img {
             height: 100%;
             margin-left: 35%;
         }
-        html{
+        
+        html {
             scroll-behavior: smooth;
         }
-        @media(max-width: 600px){
-            *{
-                font-size: 2vw;
-                margin: 2px;
-            }
-            img{
-                width: 600px;
-                height: auto;
-            }
-        }
-        /* .history{
-            background-color: rgb(27, 16, 26);
-        }
-        .history p, h1,h2,h3,h4,h5{
-            color: white;
-        }
-        #head h1, #head p{
-            color: black;
-        } */
 
-         #installBtn{
-            display: inline-block;
-            margin-left: 162.5px;
-            position: relative;
-            bottom: 6.5px;
+        /* FIXED PWA INSTALL BUTTON STYLES */
+        #installBtn {
             padding: 10px 17px;
             border: none;
             border-radius: 23px;
             color: white;
             background-color: rgb(24, 9, 24);
-            font-weight:600;
-         }
-         .dark-mode{
-            color: black;
-         }
-         /* NEW CODES */
+            font-weight: 600;
+            font-family: 'Open Sauce Sans', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
 
-         .side-a{
+        #installBtn:hover {
+            background-color: rgb(44, 29, 44);
+            transform: translateY(-1px);
+        }
+
+        /* Initially hidden - will be shown by JavaScript when PWA is installable */
+        .hidden {
+            display: none !important;
+        }
+
+        .side-a {
             text-decoration: none;
-         }
-         .hidden{
-            display: none;
-         }
+        }
 
+        @media(max-width: 600px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            header {
+                gap: 20px;
+            }
+            
+            header p {
+                font-size: 18px;
+            }
+            
+            #installBtn {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -238,23 +279,21 @@
         <div class="top-bar">
             <header>
                 <a href="#first"><p>History</p></a>
-                <a href="rubikstore.html">
-                    <p>Store</p>
-                </a>
+                <a href="rubikstore.html"><p>Store</p></a>
                 <a href="aboutMe.html"><p>About Me</p></a>
             </header>
-            <button id="installBtn" class="hidden" style="display: none;">Install PWA</button>
+            <!-- PWA Install Button - positioned properly in the top bar -->
+            <button id="installBtn" class="hidden">Install PWA</button>
         </div>
-
 
         <div class="navbar">
             <h1>Learn How to Cube</h1>
         </div>
+        
         <div class="note">
-            <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda neque illo, rerum aspernatur fugiat sunt exercitationem quae ullam id atque dolorem. Necessitatibus veritatis
-                consequuntur totam earum, 
-                omnis minus assumenda inventore tempore cum numquam veniam ipsa!</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda neque illo, rerum aspernatur fugiat sunt exercitationem quae ullam id atque dolorem. Necessitatibus veritatis consequuntur totam earum, omnis minus assumenda inventore tempore cum numquam veniam ipsa!</p>
         </div>
+        
         <div class="side">
             <a href="contactMe.html" class="side-a"><p>Contact Me</p></a>
             <a href="cfop.html" class="side-a"><p>CFOP mtd.</p></a>
@@ -281,7 +320,7 @@
                         </div>
                     </div>
                     <div class="erno-sig">
-                        <img src="assets/download.png" alt="" srcset="">
+                        <img src="assets/download.png" alt="">
                     </div>
                 </div>
             </div>
@@ -290,172 +329,115 @@
                     History <br> of Rubiks Cube
                 </h1>
                 <p class="history-text">
-                    In the early 1970s, Hungarian architect and professor Ernő Rubik sought a way to help his students understand three-dimensional movement. This pursuit led him to invent a small, twisting cube in 1974, originally called the “Magic Cube.” Designed as a teaching tool, the puzzle’s interlocking pieces moved smoothly while maintaining structural integrity, a novel engineering feat at the time. <span></span>
+                    In the early 1970s, Hungarian architect and professor Ernő Rubik sought a way to help his students understand three-dimensional movement. This pursuit led him to invent a small, twisting cube in 1974, originally called the "Magic Cube." Designed as a teaching tool, the puzzle's interlocking pieces moved smoothly while maintaining structural integrity, a novel engineering feat at the time. <span></span>
     
-                    After realizing its potential as a global puzzle, Rubik partnered with the toy company Ideal Toy Corp., which rebranded it as the Rubik’s Cube in 1980. The puzzle quickly became a worldwide sensation, challenging minds with its deceptively simple yet complex design. <span></span>
+                    After realizing its potential as a global puzzle, Rubik partnered with the toy company Ideal Toy Corp., which rebranded it as the Rubik's Cube in 1980. The puzzle quickly became a worldwide sensation, challenging minds with its deceptively simple yet complex design. <span></span>
     
-                    Over the years, the Rubik’s Cube has evolved into a cultural icon, sparking competitions, speedcubing, and even influencing fields like mathematics and artificial intelligence.
+                    Over the years, the Rubik's Cube has evolved into a cultural icon, sparking competitions, speedcubing, and even influencing fields like mathematics and artificial intelligence.
                 </p>
             </div>
         </div>
     </section>
-<script>
+
+    <script>
         let deferredPrompt;
         const installBtn = document.getElementById('installBtn');
         
-        // Debug function to check PWA status
-        function checkPWAStatus() {
-            console.log('🔍 PWA Status Check:');
-            console.log('- Service Worker supported:', 'serviceWorker' in navigator);
-            console.log('- HTTPS:', location.protocol === 'https:');
-            console.log('- Standalone mode:', window.matchMedia('(display-mode: standalone)').matches);
-            console.log('- User agent:', navigator.userAgent);
+        console.log('🔍 Script loaded, button element:', installBtn);
+        
+        // TEMPORARY: Show button immediately for testing
+        if (installBtn) {
+            installBtn.style.display = 'block';
+            installBtn.textContent = 'Test Button';
+            console.log('✅ Button forced to show for testing');
+        }
+        
+        // Check PWA requirements
+        function checkPWARequirements() {
+            console.log('🔍 PWA Requirements Check:');
+            console.log('- HTTPS:', location.protocol === 'https:' || location.hostname === 'localhost');
+            console.log('- Service Worker support:', 'serviceWorker' in navigator);
+            console.log('- Current URL:', window.location.href);
+            console.log('- User Agent:', navigator.userAgent);
+            console.log('- Already installed:', window.matchMedia('(display-mode: standalone)').matches);
             
-            // Check if already installed
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                console.log('✅ PWA is already installed');
-                return;
+            // Check for manifest
+            const manifestLink = document.querySelector('link[rel="manifest"]');
+            console.log('- Manifest link found:', !!manifestLink);
+            if (manifestLink) {
+                console.log('- Manifest href:', manifestLink.href);
             }
         }
         
-        // Run status check immediately
-        checkPWAStatus();
+        checkPWARequirements();
         
-        // Set up beforeinstallprompt listener BEFORE registering service worker
+        // Listen for beforeinstallprompt
         window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('🟡 beforeinstallprompt event fired at:', new Date().toLocaleTimeString());
-            
-            // Prevent the default prompt
+            console.log('🎉 beforeinstallprompt event fired!');
             e.preventDefault();
-            
-            // Store the event for later use
             deferredPrompt = e;
             
-            // Show the install button
             if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.textContent = 'Install PWA';
                 installBtn.classList.remove('hidden');
-                console.log('✅ Install button shown');
+                console.log('✅ Real install button shown');
             }
         });
         
-        // Register the service worker with better error handling
+        // Simple service worker registration
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then((registration) => {
-                        console.log('✅ Service Worker registered successfully:', registration.scope);
-                        
-                        // Check if service worker is ready
-                        return navigator.serviceWorker.ready;
-                    })
-                    .then((registration) => {
-                        console.log('✅ Service Worker is ready');
-                        
-                        // Double-check if beforeinstallprompt should fire now
-                        setTimeout(() => {
-                            if (!deferredPrompt && installBtn.classList.contains('hidden')) {
-                                console.log('⚠️ beforeinstallprompt may not fire - checking criteria...');
-                                checkPWAStatus();
-                            }
-                        }, 2000);
-                    })
-                    .catch(err => {
-                        console.error('❌ Service Worker registration failed:', err);
-                    });
-            });
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => {
+                    console.log('✅ Service Worker registered:', reg);
+                })
+                .catch(err => {
+                    console.error('❌ Service Worker failed:', err);
+                });
         }
-
-        // Handle install button click
+        
+        // Handle button click
         if (installBtn) {
             installBtn.addEventListener('click', async () => {
-                console.log('🔵 Install button clicked');
+                console.log('🔵 Button clicked');
                 
                 if (!deferredPrompt) {
-                    console.log('❌ No deferred prompt available');
-                    alert('Install prompt not available. Try refreshing the page.');
+                    console.log('❌ No install prompt available');
+                    alert('PWA install not available right now. Make sure you have:\n- Valid manifest.json\n- Working service worker\n- HTTPS connection');
                     return;
                 }
-
-                try {
-                    // Show the install prompt
-                    deferredPrompt.prompt();
-
-                    // Wait for the user's response
-                    const { outcome } = await deferredPrompt.userChoice;
-                    
-                    if (outcome === 'accepted') {
-                        console.log('✅ User accepted the install prompt');
-                    } else {
-                        console.log('❌ User dismissed the install prompt');
-                    }
-                } catch (error) {
-                    console.error('❌ Error showing install prompt:', error);
-                }
-
-                // Clear the deferred prompt
-                deferredPrompt = null;
                 
-                // Hide the install button
-                installBtn.classList.add('hidden');
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('User choice:', outcome);
+                
+                deferredPrompt = null;
+                installBtn.style.display = 'none';
             });
         }
-
-        // Handle successful installation
-        window.addEventListener('appinstalled', () => {
-            console.log('✅ PWA was installed successfully');
-            
-            // Hide the install button if it's still visible
-            if (installBtn) {
-                installBtn.classList.add('hidden');
-            }
-            
-            // Clear the deferred prompt
-            deferredPrompt = null;
-        });
-
-        // Fallback: Show button after 5 seconds if criteria might be met but event didn't fire
+        
+        // Check if files exist (basic test)
         setTimeout(() => {
-            if (!deferredPrompt && 
-                installBtn.classList.contains('hidden') && 
-                location.protocol === 'https:' && 
-                'serviceWorker' in navigator &&
-                !window.matchMedia('(display-mode: standalone)').matches) {
+            fetch('manifest.json')
+                .then(response => {
+                    console.log('📄 Manifest status:', response.status);
+                    return response.json();
+                })
+                .then(manifest => {
+                    console.log('📄 Manifest content:', manifest);
+                })
+                .catch(err => {
+                    console.error('❌ Manifest error:', err);
+                });
                 
-                console.log('⚠️ Fallback: Showing install button (event may have been missed)');
-                // You can uncomment this line to force show the button for testing
-                // installBtn.classList.remove('hidden');
-            }
-        }, 5000);
-
-        // Debug: Log when page is fully loaded
-        window.addEventListener('load', () => {
-            console.log('📄 Page fully loaded at:', new Date().toLocaleTimeString());
-        });
+            fetch('sw.js')
+                .then(response => {
+                    console.log('⚙️ Service Worker file status:', response.status);
+                })
+                .catch(err => {
+                    console.error('❌ Service Worker file error:', err);
+                });
+        }, 1000);
     </script>
-
-
 </body>
 </html>
-
-<script>
-    // function time(){
-    //     if(document.body.classList.contains("dark-mode")){
-    //         document.body.classList.remove("dark-mode")
-    //     }else{
-    //         var paragraphs = document.querySelectorAll("p")
-    //         var pside = document.querySelectorAll(".side p")
-    //         var head = document.querySelectorAll("header h1")
-    //         paragraphs.forEach(p => {
-    //             p.classList.add("dark-mode")
-    //         });
-
-    //         pside.forEach(p => {
-    //             p.classList.add("dark-mode")
-    //         })
-
-    //         head.forEach(h1 => {
-    //             h1.classList.add("dark-mode")
-    //         })
-    //     }
-    // }
-</script>
