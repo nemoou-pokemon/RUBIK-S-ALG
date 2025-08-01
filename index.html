@@ -227,6 +227,9 @@
          .side-a{
             text-decoration: none;
          }
+         .hidden{
+            display: none;
+         }
 
     </style>
 </head>
@@ -240,7 +243,7 @@
                 </a>
                 <a href="aboutMe.html"><p>About Me</p></a>
             </header>
-            <button id="installBtn" style="display: none;">Install PWA</button>
+            <button id="installBtn" class="hidden" style="display: none;">Install PWA</button>
         </div>
 
 
@@ -297,41 +300,52 @@
         </div>
     </section>
 <script>
-  // 1. Register the Service Worker
+  // 1. Register the service worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
-      .then(() => console.log('SW registered'))
-      .catch((err) => console.error('SW failed:', err));
+      .then(() => console.log('✅ Service Worker registered'))
+      .catch(err => console.error('❌ Service Worker registration failed:', err));
   }
 
-  // 2. Handle the PWA install button
+  // 2. Handle the install prompt
   let deferredPrompt;
   const installBtn = document.getElementById('installBtn');
 
-  // Check if install button exists
-  if (installBtn) {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'block'; // Show install button
-    });
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Prevent automatic prompt
+    deferredPrompt = e;
+    console.log('🟡 Install prompt saved');
 
+    // Option 1: Show the button via inline style
+    if (installBtn) installBtn.style.display = 'block';
+
+    // Option 2: Or via CSS class toggle (recommended)
+    // installBtn.classList.remove('hidden');
+  });
+
+  if (installBtn) {
     installBtn.addEventListener('click', () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choice) => {
+
+        deferredPrompt.userChoice.then(choice => {
           if (choice.outcome === 'accepted') {
-            console.log('User accepted install');
+            console.log('✅ User accepted the install prompt');
           } else {
-            console.log('User dismissed install');
+            console.log('❌ User dismissed the install prompt');
           }
+
           deferredPrompt = null;
-          installBtn.style.display = 'none'; // Hide after use
+
+          // Hide the button after interaction
+          installBtn.style.display = 'none';
+          // Or use: installBtn.classList.add('hidden');
         });
       }
     });
   }
 </script>
+
 
 </body>
 </html>

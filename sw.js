@@ -1,4 +1,4 @@
-const cacheName = 'rubik-pwa-v1';
+const cacheName = 'rubik-pwa-v2';
 
 const filesToCache = [
   './',
