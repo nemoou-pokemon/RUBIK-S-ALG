@@ -439,27 +439,5 @@
             });
         }
     </script>
-    
-    <!-- Put this script in the HEAD section for earlier execution -->
-    <script>
-        // Capture the beforeinstallprompt event as early as possible
-        window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('🎉 beforeinstallprompt event captured early!');
-            e.preventDefault();
-            // Store it globally so the main script can access it
-            window.beforeInstallPromptEvent = e;
-        });
-        
-        // Simple service worker registration (early)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(reg => {
-                    console.log('✅ Service Worker registered early:', reg);
-                })
-                .catch(err => {
-                    console.error('❌ Service Worker failed:', err);
-                });
-        }
-    </script>
 </body>
 </html>
