@@ -12,6 +12,28 @@
     <meta name="theme-color" content="#ffffff" />
     <link rel="shortcut icon" href="assets/blueRubiksV2.png" type="image/png">
     <link rel="icon" href="/assets/blueRubiksV2.png" type="image/png">
+    
+    <!-- Early PWA script - MUST be in HEAD -->
+    <script>
+        // Capture the beforeinstallprompt event as early as possible
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('🎉 beforeinstallprompt event captured early!');
+            e.preventDefault();
+            // Store it globally so the main script can access it
+            window.beforeInstallPromptEvent = e;
+        });
+        
+        // Simple service worker registration (early)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => {
+                    console.log('✅ Service Worker registered early:', reg);
+                })
+                .catch(err => {
+                    console.error('❌ Service Worker failed:', err);
+                });
+        }
+    </script>
     <style>
         @font-face {
             font-family: 'Open Sauce Sans';
@@ -345,12 +367,30 @@
         
         console.log('🔍 Script loaded, button element:', installBtn);
         
-        // TEMPORARY: Show button immediately for testing
-        if (installBtn) {
-            installBtn.style.display = 'block';
-            installBtn.textContent = 'Test Button';
-            console.log('✅ Button forced to show for testing');
+        // Check if beforeinstallprompt already fired (this is the key fix!)
+        if (window.beforeInstallPromptEvent) {
+            console.log('🎉 Found existing beforeinstallprompt event!');
+            deferredPrompt = window.beforeInstallPromptEvent;
+            showInstallButton();
         }
+        
+        function showInstallButton() {
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.textContent = 'Install PWA';
+                installBtn.classList.remove('hidden');
+                console.log('✅ Install button shown');
+            }
+        }
+        
+        // Also listen for future events (in case it fires after page load)
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('🎉 beforeinstallprompt event fired after page load!');
+            e.preventDefault();
+            deferredPrompt = e;
+            window.beforeInstallPromptEvent = e;
+            showInstallButton();
+        });
         
         // Check PWA requirements
         function checkPWARequirements() {
@@ -358,7 +398,6 @@
             console.log('- HTTPS:', location.protocol === 'https:' || location.hostname === 'localhost');
             console.log('- Service Worker support:', 'serviceWorker' in navigator);
             console.log('- Current URL:', window.location.href);
-            console.log('- User Agent:', navigator.userAgent);
             console.log('- Already installed:', window.matchMedia('(display-mode: standalone)').matches);
             
             // Check for manifest
@@ -371,31 +410,6 @@
         
         checkPWARequirements();
         
-        // Listen for beforeinstallprompt
-        window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('🎉 beforeinstallprompt event fired!');
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            if (installBtn) {
-                installBtn.style.display = 'block';
-                installBtn.textContent = 'Install PWA';
-                installBtn.classList.remove('hidden');
-                console.log('✅ Real install button shown');
-            }
-        });
-        
-        // Simple service worker registration
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(reg => {
-                    console.log('✅ Service Worker registered:', reg);
-                })
-                .catch(err => {
-                    console.error('❌ Service Worker failed:', err);
-                });
-        }
-        
         // Handle button click
         if (installBtn) {
             installBtn.addEventListener('click', async () => {
@@ -403,41 +417,49 @@
                 
                 if (!deferredPrompt) {
                     console.log('❌ No install prompt available');
-                    alert('PWA install not available right now. Make sure you have:\n- Valid manifest.json\n- Working service worker\n- HTTPS connection');
+                    alert('PWA install not available right now. Try refreshing the page.');
                     return;
                 }
                 
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log('User choice:', outcome);
+                try {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log('User choice:', outcome);
+                    
+                    if (outcome === 'accepted') {
+                        console.log('✅ PWA installation accepted');
+                    }
+                } catch (error) {
+                    console.error('❌ Error with install prompt:', error);
+                }
                 
                 deferredPrompt = null;
+                window.beforeInstallPromptEvent = null;
                 installBtn.style.display = 'none';
             });
         }
+    </script>
+    
+    <!-- Put this script in the HEAD section for earlier execution -->
+    <script>
+        // Capture the beforeinstallprompt event as early as possible
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('🎉 beforeinstallprompt event captured early!');
+            e.preventDefault();
+            // Store it globally so the main script can access it
+            window.beforeInstallPromptEvent = e;
+        });
         
-        // Check if files exist (basic test)
-        setTimeout(() => {
-            fetch('manifest.json')
-                .then(response => {
-                    console.log('📄 Manifest status:', response.status);
-                    return response.json();
-                })
-                .then(manifest => {
-                    console.log('📄 Manifest content:', manifest);
+        // Simple service worker registration (early)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => {
+                    console.log('✅ Service Worker registered early:', reg);
                 })
                 .catch(err => {
-                    console.error('❌ Manifest error:', err);
+                    console.error('❌ Service Worker failed:', err);
                 });
-                
-            fetch('sw.js')
-                .then(response => {
-                    console.log('⚙️ Service Worker file status:', response.status);
-                })
-                .catch(err => {
-                    console.error('❌ Service Worker file error:', err);
-                });
-        }, 1000);
+        }
     </script>
 </body>
 </html>
