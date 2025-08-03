@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubiks Cube</title>
+    <title>HomePage Design</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Funnel+Display:wght@300..800&family=Onest:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="shortcut icon" href="assets/blueRubiksV2.png" type="image/png">
-    <link rel="icon" href="/assets/blueRubiksV2.png" type="image/png">
-    
-    <!-- Early PWA script - MUST be in HEAD -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script>
         // Capture the beforeinstallprompt event as early as possible
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -34,219 +28,182 @@
                 });
         }
     </script>
-    <style>
-        @font-face {
-            font-family: 'Open Sauce Sans';
-            src: url('fonts/OpenSauceSans-Medium.woff2') format('woff2'),
-                 url('fonts/OpenSauceSans-Medium.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Maharlika';
-            src: url('Maharlika-Regular.woff2') format('woff2'),
-                 url('Maharlika-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Georgia Pro';
-            src: url('GeorgiaPro-Light.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
 
-        body, html {
+    <style>
+        *{
             margin: 0;
             padding: 0;
-        }
-        
-        body {
-            background: url(assets/rubikshd.jpeg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 100vh;
-        }
-        
-        p {
-            display: inline-block;
-        }
-        
-        .top-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 8px 20px;
             box-sizing: border-box;
         }
-        
-        header {
+        body{
+           background: linear-gradient(white, rgb(218, 218, 218));
+        }
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto; /* centers the container */
+            min-height: 100vh;
             display: flex;
-            gap: 104px;
             justify-content: center;
-            flex: 1;
+            align-items: center;
+            padding: 0.8rem 1rem;
         }
-        
-        header p {
-            color: white;
-            font-size: 23.5px;
-            font-family: 'Open Sauce Sans', sans-serif;
-            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-            margin: 0;
+        .box{
+            max-width: 765px;
+            width: 95%;
+            background-color: black;
+            border-radius: 50px;
+            box-shadow: 0px 0px 10px 2px rgb(112, 112, 112);
+            padding: 30px;
         }
-        
-        header a {
-            text-decoration: none;
-        }
-        
-        .navbar {
-            width: 270px;
-            margin-left: 80px;
-            margin-bottom: 30px;
-        }
-        
-        .navbar h1 {
-            font-size: 70px;
-            font-family: "Maharlika", sans-serif;
-            color: white;
-            font-weight: 400;
-            margin-top: 4px;
-        }
-        
-        .note {
-            color: white;
-            font-family: "Open Sauce Sans", sans-serif;
-            width: 450px;
-            display: inline-block;
-            line-height: 25px;
-            margin-left: 80px;
-            margin-top: 44px;
-        }
-        
-        .note p {
-            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .side {
-            position: absolute;
-            width: 150px;
-            height: 300px;
-            top: 30%;
-            right: 12%;
-        }
-        
-        .side p {
-            color: white;
-            font-family: "Open Sauce Sans", sans-serif;
-            display: block;
-            font-size: 22px;
-            text-align: right;
-            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 28px;
-        }
-        
-        .history {
+        .whiteBoard{
             width: 100%;
-            height: 100vh;
-            background-color: #f3f4ee;
-            margin-top: 70px;
-            position: absolute;
+            background-color: white;
+            border-radius: 6px;
+            padding: 0;
         }
-        
-        .erno {
-            width: 42.5%;
-            height: 515px;
-            margin-left: 80px;
-            margin-top: 80px;
-            display: inline-block;
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1.2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        
-        .erno-img {
-            width: 100%;
-            height: 85%;
+        .title{
+             font-family: "Poppins", sans-serif;
+             font-weight: 600;
+             font-size: 2rem;
+             color: rgb(0, 0, 75);
+             flex-shrink: 0;
         }
-        
-        .erno-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        nav{
+            display: flex;
+            gap: 3.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }.nav-links-group{
+            display: flex;
+            gap: 2.5rem;
         }
-        
-        .text {
-            width: 38%;
-            height: 515px;
-            display: inline-block;
-            vertical-align: top;
-            margin-top: 80px;
-            margin-left: 80px;
-        }
-        
-        .history-head {
-            margin: 0;
-            font-size: 65px;
-            font-family: "Georgia Pro", sans-serif;
+        .nav-link {
+            font-family: "Poppins", sans-serif;
             font-weight: 600;
+            font-size: 1rem;
+            color: rgb(0, 0, 75);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            position: relative;
         }
-        
-        .history-text {
-            font-size: 15px;
-            font-family: "Source Sans 3", sans-serif;
-            margin-top: 30px;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: rgb(0, 0, 75);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
-        
-        .history-text span {
-            display: block;
-            margin-bottom: 20px;
+        .nav-link:hover {
+            opacity: 0.8;
         }
-        
-        .erno-info {
-            height: 15%;
+        .nav-link:hover::after {
+            width: 100%;
+            background-color: rgb(50, 50, 150);
         }
-        
-        .erno-main {
-            width: max-content;
-            height: 100%;
-            display: inline-block;
+         main{
+            /* border: 2px solid blue; */
+            flex: 1;
+            padding: 2rem 1rem 1rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
         }
-        
-        .erno-name h2, .erno-pos p {
-            margin: 0;
-            font-family: "Source Sans 3", sans-serif;
+        .grid-container{
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 140px);
+            gap: 0.75rem;
         }
-        
-        .erno-name h2 {
-            font-size: 21px;
-            color: #45cf63;
+        .grid-box{
+            border-radius: 6px;
+            transition: all 0.15s ease;
         }
-        
-        .erno-pos p {
-            font-size: 19px;
-            font-weight: 500;
-            font-style: italic;
-            color: rgb(43, 26, 1);
-        }
-        
-        .erno-name {
-            margin-top: 28px;
-        }
-        
-        .erno-sig {
-            width: 64.2%;
-            height: 98%;
-            display: inline-block;
-        }
-        
-        .erno-sig img {
-            height: 100%;
-            margin-left: 35%;
-        }
-        
-        html {
-            scroll-behavior: smooth;
+        .grid-box:hover{
+            transform: scale(0.95);
         }
 
-        /* FIXED PWA INSTALL BUTTON STYLES */
+        .grid-box:nth-child(6){
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .profile {
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            color: white;
+            background-color: rgb(0, 0, 53);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 0.5rem;
+            white-space: nowrap;
+        }
+        .profile:hover {
+            transform: translateY(-3px);
+        }
+        .contact-us{
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 0.7rem;
+            color: white;
+            background-color: rgb(0, 0, 53);
+            border: none;
+            border-radius: 50px;
+            padding: 0.45rem 1.6rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .contact-us:hover {
+            transform: translateY(-3px);
+        }
+        img{
+            /* width: 8rem;
+            height: 7.5rem; */
+            max-width: 90%;
+            height: auto;
+        }
+        .grid-box:nth-child(7){
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .grid-box:nth-child(1) { background-color: #b1b1b1; }
+        .grid-box:nth-child(2) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(3) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(4) { background-color: #b1b1b1; }
+        .grid-box:nth-child(5) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(6) { background-color: #dadada; }
+        .grid-box:nth-child(7) { background-color: #b1b1b1; }
+        .grid-box:nth-child(8) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(9) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(10) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(11) { background-color: rgb(0, 0, 53); }
+        .grid-box:nth-child(12) { background-color: rgb(0, 0, 53); }
+
         #installBtn {
             padding: 10px 17px;
             border: none;
@@ -259,6 +216,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
+            position: relative;
+            top: 2rem;
+            left: 1rem;
         }
 
         #installBtn:hover {
@@ -271,95 +231,131 @@
             display: none !important;
         }
 
-        .side-a {
-            text-decoration: none;
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem 0.5rem;
+            }
+            .box {
+                padding: 20px;
+                border-radius: 30px;
+            }
+            header {
+                padding: 1rem;
+                justify-content: center;
+                text-align: center;
+            }
+            .title {
+                font-size: 1.5rem;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            nav {
+                gap: 1rem;
+                justify-content: center;
+                width: 100%;
+            }
+            .nav-link {
+                font-size: 0.9rem;
+            }
+            .profile {
+                font-size: 0.9rem;
+                padding: 0.4rem 1.1rem;
+                margin-left: 1rem;
+            }
+            .contact-us{
+                font-size: 0.65rem;
+                padding: 0.35rem 1.35rem;
+            }
+            .grid-container{
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 120px);
+                gap: 0.6rem;
+            }
         }
 
-        @media(max-width: 600px) {
-            .top-bar {
-                flex-direction: column;
-                gap: 10px;
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.3rem;
             }
-            
-            header {
-                gap: 20px;
+            nav {
+                gap: 0.8rem;
+                /* Remove flex-direction: column to keep everything in a row */
+                justify-content: center;
+                align-items: center;
             }
-            
-            header p {
-                font-size: 18px;
+            .nav-links-group {
+                display: flex;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            
-            #installBtn {
-                font-size: 12px;
-                padding: 8px 14px;
+            .profile {
+                /* Remove margin-top to keep it inline */
+                margin-left: 0.5rem;
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
+            }
+            .contact-us {
+                font-size: 0.5rem;
+                padding: 0.35rem 0.9rem;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
+            .box {
+                border-radius: 20px;
+                padding: 15px;
+            }
+            .grid-container{
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 100px);
+                gap: 0.45rem;
             }
         }
+
+
+        
     </style>
 </head>
 <body>
-    <section id="head">
-        <div class="top-bar">
-            <header>
-                <a href="#first"><p>History</p></a>
-                <a href="rubikstore.html"><p>Store</p></a>
-                <a href="aboutMe.html"><p>About Me</p></a>
-            </header>
-            <!-- PWA Install Button - positioned properly in the top bar -->
-            <button id="installBtn" class="hidden">Install PWA</button>
-        </div>
+    <button id="installBtn" class="hidden">Install PWA</button>
 
-        <div class="navbar">
-            <h1>Learn How to Cube</h1>
-        </div>
+    <div class="container">
         
-        <div class="note">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda neque illo, rerum aspernatur fugiat sunt exercitationem quae ullam id atque dolorem. Necessitatibus veritatis consequuntur totam earum, omnis minus assumenda inventore tempore cum numquam veniam ipsa!</p>
-        </div>
-        
-        <div class="side">
-            <a href="contactMe.html" class="side-a"><p>Contact Me</p></a>
-            <a href="cfop.html" class="side-a"><p>CFOP mtd.</p></a>
-            <a href="cross.html" class="side-a"><p>Cross</p></a>
-            <a href="f2l.html" class="side-a"><p>F2L</p></a>
-            <a href="oll.html" class="side-a"><p>OLL</p></a>
-            <a href="pll.html" class="side-a"><p>PLL</p></a>
-        </div>
-    </section>
-
-    <section id="first">
-        <div class="history">
-            <div class="erno">
-                <div class="erno-img">
-                    <img src="assets/upscalemedia-transformed.webp" alt="">
-                </div>
-                <div class="erno-info">
-                    <div class="erno-main">
-                        <div class="erno-name">
-                            <h2>ERNO RUBIKS</h2>
+        <div class="box">
+            <div class="whiteBoard">
+                <header>
+                    <h1 class="title">rubiks Alg</h1>
+                    <nav>
+                        <div class="nav-links-group">
+                            <a href="cfop.html" class="nav-link">cfop mtd</a>
+                            <a href="#" class="nav-link">history</a>
+                            <a href="#" class="nav-link">shop</a>
                         </div>
-                        <div class="erno-pos">
-                            <p>Founder of Rubiks Cube</p>
-                        </div>
+                        <button class="profile">Profile</button>
+                    </nav>
+                </header>
+                <main>
+                    <div class="grid-container">
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><button class="contact-us">Contact Us</button></div>
+                        <div class="grid-box"><img src="/assets/clock.png" alt="" srcset=""></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
+                        <div class="grid-box"><p></p></div>
                     </div>
-                    <div class="erno-sig">
-                        <img src="assets/download.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="text">
-                <h1 class="history-head">
-                    History <br> of Rubiks Cube
-                </h1>
-                <p class="history-text">
-                    In the early 1970s, Hungarian architect and professor Ernő Rubik sought a way to help his students understand three-dimensional movement. This pursuit led him to invent a small, twisting cube in 1974, originally called the "Magic Cube." Designed as a teaching tool, the puzzle's interlocking pieces moved smoothly while maintaining structural integrity, a novel engineering feat at the time. <span></span>
-    
-                    After realizing its potential as a global puzzle, Rubik partnered with the toy company Ideal Toy Corp., which rebranded it as the Rubik's Cube in 1980. The puzzle quickly became a worldwide sensation, challenging minds with its deceptively simple yet complex design. <span></span>
-    
-                    Over the years, the Rubik's Cube has evolved into a cultural icon, sparking competitions, speedcubing, and even influencing fields like mathematics and artificial intelligence.
-                </p>
+                </main>
             </div>
         </div>
-    </section>
+    </div>
 
     <script>
         let deferredPrompt;
@@ -382,7 +378,6 @@
                 console.log('✅ Install button shown');
             }
         }
-        
         // Also listen for future events (in case it fires after page load)
         window.addEventListener('beforeinstallprompt', (e) => {
             console.log('🎉 beforeinstallprompt event fired after page load!');
@@ -407,8 +402,7 @@
                 console.log('- Manifest href:', manifestLink.href);
             }
         }
-        
-        checkPWARequirements();
+         checkPWARequirements();
         
         // Handle button click
         if (installBtn) {
@@ -432,12 +426,15 @@
                 } catch (error) {
                     console.error('❌ Error with install prompt:', error);
                 }
-                
+                 
                 deferredPrompt = null;
                 window.beforeInstallPromptEvent = null;
                 installBtn.style.display = 'none';
             });
         }
     </script>
+
+
+
 </body>
 </html>
