@@ -233,7 +233,14 @@
         .hidden {
             display: none !important;
         }
+        body {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
 
+        body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
 
         /* Mobile responsiveness */
         @media (max-width: 990px){
