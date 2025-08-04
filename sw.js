@@ -1,5 +1,5 @@
 // IMPORTANT: Change this version number every time you deploy updates!
-const cacheName = 'rubik-pwa-v3'; // INCREMENT THIS NUMBER when you update!
+const cacheName = 'rubik-pwa-v4'; // INCREMENT THIS NUMBER when you update!
 const filesToCache = [
   './',
   './index.html',
